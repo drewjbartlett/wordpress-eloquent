@@ -1,2 +1,9 @@
-
 /vendor/
+*~
+*.lock
+*.db
+*.DS_Store
+*.swp
+*.out
+.*~
+\#*
