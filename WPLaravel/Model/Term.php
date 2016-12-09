@@ -1,5 +1,5 @@
 <?php
 
-namespace WPLaravel\Model\Term;
+namespace WPLaravel\Model;
 
 class Term extends \Illuminate\Database\Eloquent\Model {}

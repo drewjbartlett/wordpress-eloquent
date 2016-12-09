@@ -1,5 +1,5 @@
 <?php
 
-namespace WPLaravel\Model\Comment;
+namespace WPLaravel\Model;
 
 class Comment extends \Illuminate\Database\Eloquent\Model {}
