@@ -1,0 +1,11 @@
+{
+    "name": "drewjbartlett/wordpress-laravel",
+    "description": "A Laravel wrapper for wordpress which turns all Wordpress models into Laravel/Eloquent Models.",
+    "authors": [
+        {
+            "name": "Drew J Bartlett",
+            "email": "drewjbartlett@gmail.com"
+        }
+    ],
+    "require": {}
+}
