@@ -4,7 +4,7 @@ namespace WPLaravel\Model;
 
 use WPLaravel\Core\Helpers;
 
-class User extends \Illuminate\Database\Eloquent\Model {
+class User extends \WPLaravel\Abstracts\MetaAble {
 
     protected $table      = 'users';
     protected $primaryKey = 'ID';
@@ -19,6 +19,16 @@ class User extends \Illuminate\Database\Eloquent\Model {
         return $this->hasMany('\WPLaravel\Model\Post', 'post_author')
                     ->where('post_status', 'publish')
                     ->where('post_type', 'post');
+    }
+
+
+    /**
+     * [comments description]
+     * @return [type] [description]
+     * @author drewjbartlett
+     */
+    public function comments() {
+        return $this->hasMany('\WPLaravel\Model\Comment', 'user_id');
     }
 
     /**

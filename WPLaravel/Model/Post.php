@@ -2,9 +2,7 @@
 
 namespace WPLaravel\Model;
 
-use WPLaravel\Core\Helpers;
-
-class Post extends \Illuminate\Database\Eloquent\Model {
+class Post extends \WPLaravel\Abstracts\MetaAble {
     protected $table      = 'posts';
     protected $primaryKey = 'ID';
     public $timestamps    = false;
@@ -18,18 +16,26 @@ class Post extends \Illuminate\Database\Eloquent\Model {
                     ->select(['post_id', 'meta_key', 'meta_value']);
     }
 
-    public function getMeta($meta_key = false) {
-        $meta_value = '';
+    public function terms() {
+        return $this->hasManyThrough('\WPLaravel\Model\Term\Taxonomy', '\WPLaravel\Model\Term\Relationships', 'object_id', 'term_taxonomy_id')
+                    ->with('term');
 
-        if($meta_key) {
-            $meta_value = $this->meta()->where('meta_key', $meta_key)->pluck('meta_value')->first();
-
-            if(Helpers::isSerialized($meta_value)) {
-                $meta_value = unserialize($meta_value);
-            }
-
-        }
-
-        return $meta_value;
+        // return $this->hasManyThrough('\WPLaravel\Model\Term', '\WPLaravel\Model\Term\Relationships', 'object_id', 'term_id');
     }
+
+    public function categories() {
+        return $this->terms()->where('taxonomy', 'category');
+    }
+
+    public function tags() {
+        return $this->terms()->where('taxonomy', 'tag');
+    }
+
+    // relationships
+
+    public function comments() {
+        return $this->hasMany('\WPLaravel\Model\Comment', 'comment_post_ID');
+    }
+
+
 }

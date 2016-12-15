@@ -5,13 +5,15 @@ use Config;
 
 class Laravel {
 
+    protected static $_capsule;
+
     /**
      * [capsule description]
      * @param  array  $options [description]
      * @return [type]          [description]
      * @author drewjbartlett
      */
-    public static function bootEloquent($options = []) {
+    public static function connect($options = []) {
 
         $defaults = [
             'global' => true,
@@ -27,31 +29,47 @@ class Laravel {
                 'prefix' => 'wp_'
             ],
 
-            'events' => false
+            'events' => false,
+
+            'log'    => true
         ];
 
         $options = array_merge($defaults, $options);
 
-        $capsule = new \Illuminate\Database\Capsule\Manager();
+        if(is_null(self::$_capsule)) {
 
-        $capsule->addConnection([
-            'driver'    => 'mysql',
-            'host'      => $options['config']['database']['host'],
-            'database'  => $options['config']['database']['name'],
-            'username'  => $options['config']['database']['user'],
-            'password'  => $options['config']['database']['password'],
-            'charset'   => 'utf8',
-            'collation' => 'utf8_unicode_ci',
-            'prefix'    => $options['config']['prefix']
-        ]);
+            self::$_capsule = new \Illuminate\Database\Capsule\Manager();
 
-        $capsule->bootEloquent();
+            self::$_capsule->addConnection([
+                'driver'    => 'mysql',
+                'host'      => $options['config']['database']['host'],
+                'database'  => $options['config']['database']['name'],
+                'username'  => $options['config']['database']['user'],
+                'password'  => $options['config']['database']['password'],
+                'charset'   => 'utf8',
+                'collation' => 'utf8_unicode_ci',
+                'prefix'    => $options['config']['prefix']
+            ]);
 
-        if($options['events']) $capsule->setEventDispatcher(new \Illuminate\Events\Dispatcher);
+            self::$_capsule->bootEloquent();
 
-        if($options['global']) $capsule->setAsGlobal();
+            if($options['events']) self::$_capsule->setEventDispatcher(new \Illuminate\Events\Dispatcher);
 
-        return $capsule;
+            if($options['global']) self::$_capsule->setAsGlobal();
+
+            if ($options['log']) self::$_capsule->getConnection()->enableQueryLog();
+
+        }
+
+        return self::$_capsule;
+    }
+
+    public static function getConnection() {
+        return self::$_capsule->getConnection();
+    }
+
+    public static function queryLog() {
+        return self::getConnection()->getQueryLog();
     }
 }
 ?>
