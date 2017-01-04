@@ -4,7 +4,9 @@ namespace WPLaravel\Model;
 
 use WPLaravel\Core\Helpers;
 
-class User extends \WPLaravel\Abstracts\MetaAble {
+class User extends \Illuminate\Database\Eloquent\Model  {
+
+    use \WPLaravel\Traits\MetaTrait;
 
     protected $table      = 'users';
     protected $primaryKey = 'ID';

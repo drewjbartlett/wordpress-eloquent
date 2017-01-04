@@ -56,10 +56,10 @@
     echo '<h1>Comments</h1>';
 
     // print_r($post->comments()->with('meta')->get()->toArray());
-
-    $comment = Comment::find(22085);
-
-    print_r($comment->toArray());
+    //
+    // $comment = Comment::find(22085);
+    //
+    // print_r($comment->toArray());
 
     echo '<hr />';
 

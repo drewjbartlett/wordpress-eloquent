@@ -2,7 +2,10 @@
 
 namespace WPLaravel\Model;
 
-class Post extends \WPLaravel\Abstracts\MetaAble {
+class Post extends  \Illuminate\Database\Eloquent\Model {
+
+    use \WPLaravel\Traits\MetaTrait;
+
     protected $table      = 'posts';
     protected $primaryKey = 'ID';
     public $timestamps    = false;

@@ -1,10 +1,10 @@
 <?php
 
-namespace WPLaravel\Abstracts;
+namespace WPLaravel\Traits;
 
 use WPLaravel\Core\Helpers;
 
-abstract class MetaAble extends \Illuminate\Database\Eloquent\Model {
+trait MetaTrait {
 
     public function getMeta($meta_key = false) {
         $meta_value = '';
