@@ -57,7 +57,7 @@ class Laravel {
 
             if($options['global']) self::$_capsule->setAsGlobal();
 
-            if ($options['log']) self::$_capsule->getConnection()->enableQueryLog();
+            if($options['log']) self::$_capsule->getConnection()->enableQueryLog();
 
         }
 

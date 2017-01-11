@@ -5,8 +5,8 @@ namespace WPLaravel\Model;
 class Comment extends \Illuminate\Database\Eloquent\Model  {
 
     use \WPLaravel\Traits\MetaTrait;
-    
-    protected $table = 'comments';
+
+    protected $table      = 'comments';
     protected $primaryKey = 'comment_ID';
     public $timestamps    = false;
 

@@ -40,10 +40,15 @@
 
     echo '<h1>Posts</h1>';
 
-    $post = Post::find(73258);
+    $post = Post::find(73106);
 
     print_r($post->terms->toArray());
+
     print_r($post->categories->toArray());
+
+    print_r($post->tags->toArray());
+
+    print_r($post->author->toArray());
 
     // print_r(Laravel::queryLog());
 
@@ -67,7 +72,9 @@
 
     print_r(Options::getValue('siteurl'));
 
+    $testPost = Test\TestPost::find(73106);
 
+    print_r($testPost->toArray());
     echo '</pre>';
 
 ?>

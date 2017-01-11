@@ -11,7 +11,7 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     public $timestamps    = false;
 
     public function author() {
-        return $this->hasOne('\App\Model\User', 'post_author');
+        return $this->hasOne('\WPLaravel\Model\User', 'ID', 'post_author');
     }
 
     public function meta() {
@@ -31,7 +31,7 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     }
 
     public function tags() {
-        return $this->terms()->where('taxonomy', 'tag');
+        return $this->terms()->where('taxonomy', 'post_tag');
     }
 
     // relationships
