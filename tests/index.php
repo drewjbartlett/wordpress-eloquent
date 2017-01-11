@@ -74,7 +74,9 @@
 
     $testPost = Test\TestPost::find(73106);
 
-    print_r($testPost->toArray());
+
+
+    print_r($testPost->trails);
     echo '</pre>';
 
 ?>

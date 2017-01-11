@@ -49,6 +49,7 @@ A library that converts converts wordpress tables into Laravel Eloquent models.
 
 ```php
     use \WPLaravel\Model\Options;
+
     $siteurl = Options::where('option_name', 'siteurl')->value('option_value');
 ```
 
@@ -61,3 +62,27 @@ Or use the helper function `getValue`
 ### Links
 
 ### Extending your own models
+
+If you want to add your own functionality to a model, for instance a `User` you can do so like this:
+
+```php
+    namespace App\Model;
+
+    class User extends \WPLaravel\Model\User {
+        public function orders() {
+            return $this->hasMany('\App\Model\User\Orders');
+        }
+    }
+```
+
+Another example would be for custom taxonomies on a post, say `country`
+
+```php
+    namespace App\Model;
+
+    class Post extends \WPLaravel\Model\Post {
+        public function country() {
+            return $this->terms()->where('taxonomy', 'country');
+        }
+    }
+```
