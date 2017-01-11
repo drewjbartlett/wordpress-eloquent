@@ -69,9 +69,11 @@ If you want to add your own functionality to a model, for instance a `User` you 
     namespace App\Model;
 
     class User extends \WPLaravel\Model\User {
+
         public function orders() {
             return $this->hasMany('\App\Model\User\Orders');
         }
+
     }
 ```
 
@@ -81,8 +83,10 @@ Another example would be for custom taxonomies on a post, say `country`
     namespace App\Model;
 
     class Post extends \WPLaravel\Model\Post {
+
         public function country() {
             return $this->terms()->where('taxonomy', 'country');
         }
+
     }
 ```
