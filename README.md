@@ -1,5 +1,5 @@
 # Wordpress Laravel Eloquent Models
-A library that converts converts wordpress tables into [Laravel Eloquent Models](https://laravel.com/docs/5.3/eloquent). This is helpful for dropping into any wordpress project where maybe you're more comfortable with Laravel's Eloquent Models. Or maybe you're writing an API aside from wordpress's `wp_ajax` and don't want to increase your load time by loading the entire WP core. This is a great boiler plate based off [Eloquent](https://laravel.com/docs/5.3/eloquent) by Laravel to get you going.
+A library that converts converts wordpress tables into [Laravel Eloquent Models](https://laravel.com/docs/5.3/eloquent). This is helpful for dropping into any wordpress project where maybe you'd rather use the awesome features of Laravel's Eloquent Models. Or maybe you're writing an API with something like [Slim](https://www.slimframework.com/) or better yet [Lumen](https://lumen.laravel.com/) don't want to increase your load time by loading the entire WP core. This is a great boiler plate based off [Eloquent](https://laravel.com/docs/5.3/eloquent) by Laravel to get you going.
 
 ## Overview
  - [Installation](#installation)
