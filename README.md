@@ -1,5 +1,5 @@
-# Wordpress Laravel
-A library that converts converts wordpress tables into Laravel Eloquent models.
+# Wordpress Laravel Eloquent Models
+A library that converts converts wordpress tables into [Laravel Eloquent Models](https://laravel.com/docs/5.3/eloquent). This is helpful for dropping into any wordpress project where maybe you're more comfortable with Laravel's Eloquent Models. Or maybe you're writing an API aside from wordpress's `wp_ajax` and don't want to increase your load time by loading the entire WP core. This is a great boiler plate based off [Eloquent](https://laravel.com/docs/5.3/eloquent) by Laravel to get you going.
 
 ## Overview
  - [Installation](#installation)
@@ -16,16 +16,52 @@ A library that converts converts wordpress tables into Laravel Eloquent models.
    - [Meta](#user-meta)
  - [Options](#options)
  - [Links](#links)
+ - [Query Logs](#query-logs)
 
 [Extending your own models](#extending-your-own-models)
 
 ### Installation
 
-    `composer require drewjbartlett/wp-laravel`
+    `composer require drewjbartlett/wp-eloquent`
 
 ### Setup
 
+```php
+    require_once('vendor/autoload.php');
+
+    \WPLaravel\Core\Laravel::connect([
+        'config' => [
+
+            'database' => [
+                'user'     => 'user',
+                'password' => 'password',
+                'name'     => 'database',
+                'host'     => '127.0.0.1'
+            ],
+
+            // your wpdb prefix
+            'prefix' => 'wp_',
+
+            // enable events
+            'events' => false,
+
+            // enable query log
+            'log'    => true
+        ],
+    ]);
+
+```
+
+If you wanted to enable this on your entire WP install you could create a file to drop in the `mu-plugins` folder.
+
 ### Posts
+
+```php
+    // getting a post
+    $post = Post::find(73106);
+```
+
+leverages [global scopes](https://laravel.com/docs/5.3/eloquent#query-scopes) for published.
 
 ### Post Meta
 
@@ -47,17 +83,19 @@ A library that converts converts wordpress tables into Laravel Eloquent models.
 
 ### Options
 
+In wordpress we'd normally use `get_option`. Alternatively, if you don't want to load the wordpress core you can use helper function `getValue`.
+
+```php
+    $siteurl = Options::getValue('siteurl');
+```
+Or of course, the long form:
 ```php
     use \WPLaravel\Model\Options;
 
     $siteurl = Options::where('option_name', 'siteurl')->value('option_value');
 ```
 
-Or use the helper function `getValue`
 
-```php
-    $siteurl = Options::getValue('siteurl');
-```
 
 ### Links
 
@@ -84,9 +122,11 @@ Another example would be for custom taxonomies on a post, say `country`
 
     class Post extends \WPLaravel\Model\Post {
 
-        public function country() {
+        public function countries() {
             return $this->terms()->where('taxonomy', 'country');
         }
 
     }
+
+    Post::with(['categories', 'countries'])->find(1);
 ```

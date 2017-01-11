@@ -10,6 +10,14 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     protected $primaryKey = 'ID';
     public $timestamps    = false;
 
+    protected static function boot() {
+       parent::boot();
+
+       static::addGlobalScope('published', function (Builder $builder) {
+           $builder->where('post_status', 'publish');
+       });
+   }
+
     public function author() {
         return $this->hasOne('\WPLaravel\Model\User', 'ID', 'post_author');
     }
@@ -22,8 +30,6 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     public function terms() {
         return $this->hasManyThrough('\WPLaravel\Model\Term\Taxonomy', '\WPLaravel\Model\Term\Relationships', 'object_id', 'term_taxonomy_id')
                     ->with('term');
-
-        // return $this->hasManyThrough('\WPLaravel\Model\Term', '\WPLaravel\Model\Term\Relationships', 'object_id', 'term_id');
     }
 
     public function categories() {
@@ -34,11 +40,8 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
         return $this->terms()->where('taxonomy', 'post_tag');
     }
 
-    // relationships
-
     public function comments() {
         return $this->hasMany('\WPLaravel\Model\Comment', 'comment_post_ID');
     }
-
 
 }
