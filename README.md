@@ -19,7 +19,7 @@ A library that converts converts wordpress tables into [Laravel Eloquent Models]
 
 ### Installation
 
-    composer require drewjbartlett/wp-eloquent
+    composer require drewjbartlett/wordpress-eloquent
 
 ### Setup
 
@@ -70,7 +70,7 @@ If you wanted to enable this on your entire WP install you could create a file w
 
 ```
 
-By default, the `Post` returns posts with all statuses. You can however override this with a [local scope](https://laravel.com/docs/5.3/eloquent#query-scopes) to return only published posts.
+By default, the `Post` returns posts with all statuses. You can however override this with the [local scope](https://laravel.com/docs/5.3/eloquent#query-scopes) `published` to return only published posts.
 
 ```php
     Post::published()->get();
