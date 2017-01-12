@@ -49,7 +49,7 @@ A library that converts converts wordpress tables into [Laravel Eloquent Models]
 
 ```
 
-If you wanted to enable this on your entire WP install you could create a file to drop in the `mu-plugins` folder.
+If you wanted to enable this on your entire WP install you could create a file with the above code to drop in the `mu-plugins` folder.
 
 ### Posts
 
