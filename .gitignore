@@ -7,5 +7,5 @@
 *.out
 .*~
 \#*
-Test
-tests
+/Test/
+/tests/
