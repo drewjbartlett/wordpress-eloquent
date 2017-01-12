@@ -19,7 +19,7 @@ A library that converts converts wordpress tables into [Laravel Eloquent Models]
 
 ### Installation
 
-    `composer require drewjbartlett/wp-eloquent`
+    composer require drewjbartlett/wp-eloquent
 
 ### Setup
 
