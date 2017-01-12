@@ -19,6 +19,10 @@ class Comment extends \Illuminate\Database\Eloquent\Model  {
                     ->select(['comment_id', 'meta_key', 'meta_value']);
     }
 
+    public function user() {
+        return $this->hasOne('\WPLaravel\Model\User', 'ID', 'user_id');
+    }
+
     public function getMeta($meta_key = false) {
         $meta_value = '';
 

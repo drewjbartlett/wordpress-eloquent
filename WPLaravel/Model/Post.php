@@ -10,14 +10,6 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     protected $primaryKey = 'ID';
     public $timestamps    = false;
 
-    protected static function boot() {
-       parent::boot();
-
-       static::addGlobalScope('published', function (Builder $builder) {
-           $builder->where('post_status', 'publish');
-       });
-   }
-
     public function author() {
         return $this->hasOne('\WPLaravel\Model\User', 'ID', 'post_author');
     }
@@ -42,6 +34,10 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
 
     public function comments() {
         return $this->hasMany('\WPLaravel\Model\Comment', 'comment_post_ID');
+    }
+
+    public function scopePublished($query) {
+        return $query->where('post_status', 'publish');
     }
 
 }

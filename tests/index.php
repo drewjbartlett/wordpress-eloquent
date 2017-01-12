@@ -40,7 +40,7 @@
 
     echo '<h1>Posts</h1>';
 
-    $post = Post::find(73106);
+    $post = Post::find(73240);
 
     print_r($post->terms->toArray());
 
@@ -62,9 +62,10 @@
 
     // print_r($post->comments()->with('meta')->get()->toArray());
     //
-    // $comment = Comment::find(22085);
+    $comment = Comment::find(21671);
     //
-    // print_r($comment->toArray());
+    print_r($comment->user);
+    //
 
     echo '<hr />';
 

@@ -1,19 +1,16 @@
 # Wordpress Laravel Eloquent Models
 A library that converts converts wordpress tables into [Laravel Eloquent Models](https://laravel.com/docs/5.3/eloquent). This is helpful for dropping into any wordpress project where maybe you'd rather use the awesome features of Laravel's Eloquent Models. Or maybe you're writing an API with something like [Slim](https://www.slimframework.com/) or better yet [Lumen](https://lumen.laravel.com/) don't want to increase your load time by loading the entire WP core. This is a great boiler plate based off [Eloquent](https://laravel.com/docs/5.3/eloquent) by Laravel to get you going.
 
+** This is documentation for additional functionality on top of Eloquent. For documentation on all of Eloquent's features you visit the [documentation](https://laravel.com/docs/5.3/eloquent).
+
 ## Overview
  - [Installation](#installation)
  - [Setup](#setup)
  - [Posts](#posts)
-   - [Meta](#post-meta)
  - [Comments](#comments)
-   - [Meta](#comment-meta)
  - [Terms](#terms)
-   - [Meta](#term-meta)
-   - [Relationships](#term-relationships)
-   - [Taxonomy](#term-taxonomy)
  - [Users](#users)
-   - [Meta](#user-meta)
+ - [Meta](#meta)
  - [Options](#options)
  - [Links](#links)
  - [Query Logs](#query-logs)
@@ -58,30 +55,56 @@ If you wanted to enable this on your entire WP install you could create a file t
 
 ```php
     // getting a post
-    $post = Post::find(73106);
+    $post = Post::find(1);
+
+    // available relationships
+    $post->author;
+    $post->comments;
+    $post->terms;
+    $post->tags;
+    $post->categories;
+    $post->meta;
+
 ```
 
-leverages [global scopes](https://laravel.com/docs/5.3/eloquent#query-scopes) for published.
+By default, the `Post` returns posts with all statuses. You can however override this with a [local scope](https://laravel.com/docs/5.3/eloquent#query-scopes) to return only published posts.
 
-### Post Meta
+```php
+    Post::published()->get();
+```
 
 ### Comments
 
-### Comment Meta
+```php
+    // getting a comment
+    $comment = Comment::find(12345);
+
+    // available relationships
+    $comment->post;
+    $comment->author;
+    $comment->meta
+
+```
 
 ### Terms
 
-### Term Meta
-
-### Term Relationships
-
-### Term Taxonomy
-
 ### Users
 
-### User Meta
-
 ### Options
+
+### Meta
+
+The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. Therefore they meta can easily be retrieved by the `getMeta` helper function:
+
+```php
+    Post::getMeta('featured_image');
+
+    User::getMeta('facebook');
+
+    Comment::getMeta('some_comment_meta');
+
+    Term::getMeta('some_term_meta');
+```
 
 In wordpress we'd normally use `get_option`. Alternatively, if you don't want to load the wordpress core you can use helper function `getValue`.
 
