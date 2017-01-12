@@ -7,6 +7,7 @@
             "email": "drewjbartlett@gmail.com"
         }
     ],
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.6.4",
         "illuminate/database": "5.3.*"
