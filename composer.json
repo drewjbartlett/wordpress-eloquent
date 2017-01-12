@@ -1,13 +1,19 @@
 {
     "name": "drewjbartlett/wordpress-eloquent",
     "description": "A Laravel wrapper for wordpress which turns all Wordpress models into Laravel Eloquent Models.",
+    "keywords": ["wordpress", "eloquent", "laravel"],
+    "homepage": "https://github.com/drewjbartlett/wordpress-eloquent",
+    "support": {
+        "issues": "https://github.com/drewjbartlett/wordpress-eloquent/issues",
+        "source": "https://github.com/drewjbartlett/wordpress-eloquent"
+    },
     "authors": [
         {
             "name": "Drew J Bartlett",
             "email": "drewjbartlett@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.4",
         "illuminate/database": "5.3.*"
