@@ -123,7 +123,7 @@ The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. The
 ```php
     $post = Post::find(1);
     $post->setMeta('featured_image', 'my-image.jpg');
-    $post->setMeta('breakfast', '['waffles' => 'blueberry', 'pancakes' => 'banana']');
+    $post->setMeta('breakfast', ['waffles' => 'blueberry', 'pancakes' => 'banana']);
 
     // or all in one call
     $featured_image = Post::find(1)->getMeta('featured_image');
