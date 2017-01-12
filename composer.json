@@ -1,6 +1,6 @@
 {
-    "name": "drewjbartlett/wordpress-laravel",
-    "description": "A Laravel wrapper for wordpress which turns all Wordpress models into Laravel/Eloquent Models.",
+    "name": "drewjbartlett/wordpress-eloquent",
+    "description": "A Laravel wrapper for wordpress which turns all Wordpress models into Laravel Eloquent Models.",
     "authors": [
         {
             "name": "Drew J Bartlett",
@@ -13,8 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "WPEloquent\\": "WPEloquent/",
-            "Test\\": "Test/"
+            "WPEloquent\\": "WPEloquent/"
         }
     }
 }
