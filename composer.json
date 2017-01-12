@@ -15,5 +15,6 @@
         "psr-4": {
             "WPEloquent\\": "WPEloquent/"
         }
-    }
+    },
+    "version" : "1.0.0"
 }

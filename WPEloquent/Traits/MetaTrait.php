@@ -21,4 +21,12 @@ trait MetaTrait {
         return $meta_value;
     }
 
+    public function setMeta($key, $value){
+        $value = is_array($value) ? serialize($value) : $value;
+        $meta  = $this->meta()->firstOrCreate(['meta_key' => $key]);
+        $meta  = $this->meta()->where(['meta_key' => $key])->update(['meta_value' => $value]);
+
+        return $this;
+    }
+
 }

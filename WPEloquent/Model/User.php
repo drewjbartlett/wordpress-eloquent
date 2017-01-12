@@ -12,6 +12,8 @@ class User extends \Illuminate\Database\Eloquent\Model  {
     protected $primaryKey = 'ID';
     public $timestamps    = false;
 
+    const CREATED_AT = 'user_registered';
+
     public function posts() {
         return $this->hasMany('\WPEloquent\Model\Post', 'post_author')
                     ->where('post_status', 'publish')

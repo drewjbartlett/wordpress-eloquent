@@ -118,16 +118,28 @@ In this version `Term` is still accesible as a model but is only leveraged throu
 
 ### Meta
 
-The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. Therefore they meta can easily be retrieved by the `getMeta` helper function:
+The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. Therefore they meta can easily be retrieved by the `getMeta` and set by the `setMeta` helper functions:
 
 ```php
-    Post::getMeta('featured_image');
+    $post = Post::find(1);
+    $post->setMeta('featured_image', 'my-image.jpg');
+    $post->setMeta('breakfast', '['waffles' => 'blueberry', 'pancakes' => 'banana']');
 
-    User::getMeta('facebook');
+    // or all in one call
+    $featured_image = Post::find(1)->getMeta('featured_image');
+    Post::find(1)->setMeta('featured_image', 'image.jpg');
 
-    Comment::getMeta('some_comment_meta');
+    // same applies for all other models
 
-    Term::getMeta('some_term_meta');
+    $user = User::find(1)
+    $facebook = $user->getMeta('facebook');
+    $user->setMeta('social', ['facebook' => 'facebook.com/me', 'instagram' => 'instagram.com/me']);
+
+    $comment = Comment::find(1);
+    $meta = $comment->getMeta('some_comment_meta');
+
+    $term = Term::find(123);
+    $meta = $term->getMeta('some_term_meta');
 ```
 
 ### Options
@@ -170,6 +182,14 @@ If you want to add your own functionality to a model, for instance a `User` you 
             return $this->hasMany('\App\Model\User\Orders');
         }
 
+        public function current() {
+            // some functionality to get current user
+        }
+
+        public function favorites() {
+            return $this->hasMany('Favorites');
+        }
+
     }
 ```
 
@@ -199,3 +219,5 @@ Sometimes it's helpful to see the query logs for debugging. You can enable the l
     print_r(Laravel::queryLog());
 
 ```
+
+** Disclaimer: This is the first version. There's a lot more that can be added to this but this works and is fully extendable. Expect updates in the near future!

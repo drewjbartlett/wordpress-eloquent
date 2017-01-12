@@ -8,7 +8,10 @@ class Comment extends \Illuminate\Database\Eloquent\Model  {
 
     protected $table      = 'comments';
     protected $primaryKey = 'comment_ID';
+    protected $fillable = [];
     public $timestamps    = false;
+
+    const CREATED_AT = 'comment_date';
 
     public function post() {
         return $this->belongsTo('\WPEloquent\Model\Post');

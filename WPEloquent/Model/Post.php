@@ -10,6 +10,9 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     protected $primaryKey = 'ID';
     public $timestamps    = false;
 
+    const CREATED_AT = 'post_date';
+	const UPDATED_AT = 'post_modified';
+
     public function author() {
         return $this->hasOne('\WPEloquent\Model\User', 'ID', 'post_author');
     }
