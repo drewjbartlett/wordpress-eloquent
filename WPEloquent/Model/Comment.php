@@ -22,5 +22,5 @@ class Comment extends \Illuminate\Database\Eloquent\Model  {
     public function user() {
         return $this->hasOne('\WPEloquent\Model\User', 'ID', 'user_id');
     }
-    
+
 }

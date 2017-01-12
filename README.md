@@ -26,7 +26,7 @@ A library that converts converts wordpress tables into [Laravel Eloquent Models]
 ```php
     require_once('vendor/autoload.php');
 
-    \WPLaravel\Core\Laravel::connect([
+    \WPEloquent\Core\Laravel::connect([
         'config' => [
 
             'database' => [
@@ -54,6 +54,9 @@ If you wanted to enable this on your entire WP install you could create a file t
 ### Posts
 
 ```php
+
+    use \WPEloquent\Model\Post;
+
     // getting a post
     $post = Post::find(1);
 
@@ -76,6 +79,9 @@ By default, the `Post` returns posts with all statuses. You can however override
 ### Comments
 
 ```php
+
+    use \WPEloquent\Model\Comment;
+
     // getting a comment
     $comment = Comment::find(12345);
 
@@ -88,9 +94,27 @@ By default, the `Post` returns posts with all statuses. You can however override
 
 ### Terms
 
+In this version `Term` is still accesible as a model but is only leveraged through posts.
+
+```php
+    $post->terms()->where('taxonomy', 'country');
+```
+
 ### Users
 
-### Options
+```php
+
+    use \WPEloquent\Model\User;
+
+    // getting a comment
+    $user = User::find(123);
+
+    // available relationships
+    $user->posts;
+    $user->meta;
+    $user->comments
+
+```
 
 ### Meta
 
@@ -106,21 +130,32 @@ The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. The
     Term::getMeta('some_term_meta');
 ```
 
-In wordpress we'd normally use `get_option`. Alternatively, if you don't want to load the wordpress core you can use helper function `getValue`.
+### Options
+
+In wordpress you can use `get_option`. Alternatively, if you don't want to load the wordpress core you can use helper function `getValue`.
 
 ```php
-    $siteurl = Options::getValue('siteurl');
+    use \WPEloquent\Model\Post;
+
+    $siteurl = Option::getValue('siteurl');
 ```
+
 Or of course, the long form:
+
 ```php
-    use \WPLaravel\Model\Options;
+    use \WPEloquent\Model\Options;
 
-    $siteurl = Options::where('option_name', 'siteurl')->value('option_value');
+    $siteurl = Option::where('option_name', 'siteurl')->value('option_value');
 ```
-
 
 
 ### Links
+
+```php
+    use \WPEloquent\Model\Link;
+
+    $siteurl = Link::find(1);
+```
 
 ### Extending your own models
 
@@ -129,7 +164,7 @@ If you want to add your own functionality to a model, for instance a `User` you 
 ```php
     namespace App\Model;
 
-    class User extends \WPLaravel\Model\User {
+    class User extends \WPEloquent\Model\User {
 
         public function orders() {
             return $this->hasMany('\App\Model\User\Orders');
@@ -143,7 +178,7 @@ Another example would be for custom taxonomies on a post, say `country`
 ```php
     namespace App\Model;
 
-    class Post extends \WPLaravel\Model\Post {
+    class Post extends \WPEloquent\Model\Post {
 
         public function countries() {
             return $this->terms()->where('taxonomy', 'country');
@@ -152,4 +187,15 @@ Another example would be for custom taxonomies on a post, say `country`
     }
 
     Post::with(['categories', 'countries'])->find(1);
+```
+
+### Query Logs
+
+Sometimes it's helpful to see the query logs for debugging. You can enable the logs by passing `log` is set to `true` (see [setup](#setup)) on the `Laravel::connect` method. Logs are retrieved by running.
+
+```php
+    use \WPEloquent\Core\Laravel;
+
+    print_r(Laravel::queryLog());
+
 ```

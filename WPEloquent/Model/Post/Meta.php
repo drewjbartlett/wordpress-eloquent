@@ -1,12 +1,12 @@
 <?php
 
-namespace WPLaravel\Model\Post;
+namespace WPEloquent\Model\Post;
 
 class Meta extends \Illuminate\Database\Eloquent\Model {
     protected $table   = 'postmeta';
     public $timestamps = false;
 
     public function post() {
-        return $this->belongsTo('\WPLaravel\Model\Post');
+        return $this->belongsTo('\WPEloquent\Model\Post');
     }
 }

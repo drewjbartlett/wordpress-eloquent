@@ -1,13 +1,13 @@
 <?php
-    use \WPLaravel\Core\Laravel;
-    use \WPLaravel\Model\Post;
-    use \WPLaravel\Model\Comment;
-    use \WPLaravel\Model\User;
-    use \WPLaravel\Model\Options;
+    use \WPEloquent\Core\Laravel;
+    use \WPEloquent\Model\Post;
+    use \WPEloquent\Model\Comment;
+    use \WPEloquent\Model\User;
+    use \WPEloquent\Model\Options;
 
     require_once('./../vendor/autoload.php');
 
-    \WPLaravel\Core\Laravel::connect([
+    \WPEloquent\Core\Laravel::connect([
         'config' => [
             'database' => [
                 'user'     => 'root',
@@ -50,9 +50,9 @@
 
     print_r($post->author->toArray());
 
-    // print_r(Laravel::queryLog());
+    print_r(Laravel::queryLog());
 
-    // print_r($post->toArray());
+    print_r($post->toArray());
 
     print_r($post->getMeta('post_background'));
 
@@ -60,7 +60,7 @@
 
     echo '<h1>Comments</h1>';
 
-    // print_r($post->comments()->with('meta')->get()->toArray());
+    print_r($post->comments()->with('meta')->get()->toArray());
     //
     $comment = Comment::find(21671);
     //

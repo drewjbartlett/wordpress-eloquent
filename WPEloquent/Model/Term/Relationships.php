@@ -1,6 +1,6 @@
 <?php
 
-namespace WPLaravel\Model\Term;
+namespace WPEloquent\Model\Term;
 
 class Relationships extends \Illuminate\Database\Eloquent\Model {
     protected $table = 'term_relationships';

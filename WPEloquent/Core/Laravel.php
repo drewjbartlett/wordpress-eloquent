@@ -1,5 +1,5 @@
 <?php
-namespace WPLaravel\Core;
+namespace WPEloquent\Core;
 
 use Config;
 

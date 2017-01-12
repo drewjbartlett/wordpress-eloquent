@@ -1,10 +1,10 @@
 <?php
 
-namespace WPLaravel\Model;
+namespace WPEloquent\Model;
 
-use WPLaravel\Core\Helpers;
+use WPEloquent\Core\Helpers;
 
-class Options extends \Illuminate\Database\Eloquent\Model {
+class Option extends \Illuminate\Database\Eloquent\Model {
     protected $table      = 'options';
     protected $primaryKey = 'option_id';
     public $timestamps    = false;

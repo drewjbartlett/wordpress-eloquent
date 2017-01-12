@@ -1,12 +1,12 @@
 <?php
 
-namespace WPLaravel\Model\User;
+namespace WPEloquent\Model\User;
 
 class Meta extends \Illuminate\Database\Eloquent\Model {
     protected $table   = 'usermeta'; 
     public $timestamps = false;
 
     public function user() {
-        return $this->belongsTo('\WPLaravel\Model\User');
+        return $this->belongsTo('\WPEloquent\Model\User');
     }
 }

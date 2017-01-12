@@ -1,16 +1,16 @@
 <?php
 
-namespace WPLaravel\Model;
+namespace WPEloquent\Model;
 
 class Term extends \Illuminate\Database\Eloquent\Model  {
 
-    use \WPLaravel\Traits\MetaTrait;
+    use \WPEloquent\Traits\MetaTrait;
     
     protected $table = 'terms';
     protected $primaryKey = 'term_id';
 
     public function meta() {
-        return $this->hasMany('\WPLaravel\Model\Term\Meta', 'term_id')
+        return $this->hasMany('\WPEloquent\Model\Term\Meta', 'term_id')
                     ->select(['term_id', 'meta_key', 'meta_value']);
     }
 

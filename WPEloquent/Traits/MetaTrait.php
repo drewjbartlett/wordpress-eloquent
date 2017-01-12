@@ -1,8 +1,8 @@
 <?php
 
-namespace WPLaravel\Traits;
+namespace WPEloquent\Traits;
 
-use WPLaravel\Core\Helpers;
+use WPEloquent\Core\Helpers;
 
 trait MetaTrait {
 

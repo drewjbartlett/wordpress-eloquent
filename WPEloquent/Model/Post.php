@@ -1,26 +1,26 @@
 <?php
 
-namespace WPLaravel\Model;
+namespace WPEloquent\Model;
 
 class Post extends  \Illuminate\Database\Eloquent\Model {
 
-    use \WPLaravel\Traits\MetaTrait;
+    use \WPEloquent\Traits\MetaTrait;
 
     protected $table      = 'posts';
     protected $primaryKey = 'ID';
     public $timestamps    = false;
 
     public function author() {
-        return $this->hasOne('\WPLaravel\Model\User', 'ID', 'post_author');
+        return $this->hasOne('\WPEloquent\Model\User', 'ID', 'post_author');
     }
 
     public function meta() {
-        return $this->hasMany('\WPLaravel\Model\Post\Meta', 'post_id')
+        return $this->hasMany('\WPEloquent\Model\Post\Meta', 'post_id')
                     ->select(['post_id', 'meta_key', 'meta_value']);
     }
 
     public function terms() {
-        return $this->hasManyThrough('\WPLaravel\Model\Term\Taxonomy', '\WPLaravel\Model\Term\Relationships', 'object_id', 'term_taxonomy_id')
+        return $this->hasManyThrough('\WPEloquent\Model\Term\Taxonomy', '\WPEloquent\Model\Term\Relationships', 'object_id', 'term_taxonomy_id')
                     ->with('term');
     }
 
@@ -33,7 +33,7 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
     }
 
     public function comments() {
-        return $this->hasMany('\WPLaravel\Model\Comment', 'comment_post_ID');
+        return $this->hasMany('\WPEloquent\Model\Comment', 'comment_post_ID');
     }
 
     public function scopePublished($query) {

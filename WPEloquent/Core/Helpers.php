@@ -1,5 +1,5 @@
 <?php
-    namespace WPLaravel\Core;
+    namespace WPEloquent\Core;
 
     class Helpers {
         // a copy of wp's is_serialized

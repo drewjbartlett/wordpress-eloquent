@@ -1,6 +1,6 @@
 <?php
 
-namespace WPLaravel\Model;
+namespace WPEloquent\Model;
 
 class Links extends \Illuminate\Database\Eloquent\Model {
     protected $table      = 'links';
