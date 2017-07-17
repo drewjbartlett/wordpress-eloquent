@@ -4,7 +4,7 @@ namespace WPEloquent\Model;
 
 class Post extends  \Illuminate\Database\Eloquent\Model {
 
-    use \WPEloquent\Traits\MetaTrait;
+    use \WPEloquent\Traits\HasMeta;
 
     protected $table      = 'posts';
     protected $primaryKey = 'ID';

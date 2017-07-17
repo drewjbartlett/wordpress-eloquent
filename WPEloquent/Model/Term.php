@@ -4,7 +4,7 @@ namespace WPEloquent\Model;
 
 class Term extends \Illuminate\Database\Eloquent\Model  {
 
-    use \WPEloquent\Traits\MetaTrait;
+    use \WPEloquent\Traits\HasMeta;
     
     protected $table = 'terms';
     protected $primaryKey = 'term_id';

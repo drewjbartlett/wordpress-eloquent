@@ -4,7 +4,7 @@ namespace WPEloquent\Traits;
 
 use WPEloquent\Core\Helpers;
 
-trait MetaTrait {
+trait HasMeta {
 
     public function getMeta($meta_key = false) {
         $meta_value = '';

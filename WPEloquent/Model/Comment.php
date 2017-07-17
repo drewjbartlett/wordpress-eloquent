@@ -4,7 +4,7 @@ namespace WPEloquent\Model;
 
 class Comment extends \Illuminate\Database\Eloquent\Model  {
 
-    use \WPEloquent\Traits\MetaTrait;
+    use \WPEloquent\Traits\HasMeta;
 
     protected $table      = 'comments';
     protected $primaryKey = 'comment_ID';

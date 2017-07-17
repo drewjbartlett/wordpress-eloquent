@@ -118,7 +118,7 @@ In this version `Term` is still accesible as a model but is only leveraged throu
 
 ### Meta
 
-The models `Post`, `User`, `Comment`, `Term`, all implement the `MetaTrait`. Therefore they meta can easily be retrieved by the `getMeta` and set by the `setMeta` helper functions:
+The models `Post`, `User`, `Comment`, `Term`, all implement the `HasMeta`. Therefore they meta can easily be retrieved by the `getMeta` and set by the `setMeta` helper functions:
 
 ```php
     $post = Post::find(1);

@@ -2,11 +2,12 @@
 
 namespace WPEloquent\Model;
 
-use WPEloquent\Core\Helpers;
+use WPEloquent\Traits\HasMeta;
+use WPEloquent\Traits\HasRoles;
 
 class User extends \Illuminate\Database\Eloquent\Model  {
 
-    use \WPEloquent\Traits\MetaTrait;
+    use HasMeta, HasRoles;
 
     protected $table      = 'users';
     protected $primaryKey = 'ID';
