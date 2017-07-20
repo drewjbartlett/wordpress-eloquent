@@ -70,7 +70,7 @@ If you wanted to enable this on your entire WP install you could create a file w
 
 ```
 
-***Statuses**
+***Statuses***
 
 By default, the `Post` returns posts with all statuses. You can however override this with the [local scope](https://laravel.com/docs/5.3/eloquent#query-scopes) `published` to return only published posts.
 
