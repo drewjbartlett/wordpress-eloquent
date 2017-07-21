@@ -41,16 +41,16 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
         return $this->hasMany('\WPEloquent\Model\Comment', 'comment_post_ID');
     }
 
-   public function scopeStatus ($query, $status = 'publish') {
+    public function scopeStatus ($query, $status = 'publish') {
         return $query->where('post_status', $status);
-    }
-
-    public function scopePublished ($query) {
-        return $query->where('post_status', 'publish');
     }
 
     public function scopeType ($query, $type = 'post') {
         return $query->where('post_type', $type);
+    }
+
+    public function scopePublished ($query) {
+        return $query->status('publish');
     }
 
 }
