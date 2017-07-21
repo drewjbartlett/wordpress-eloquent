@@ -10,6 +10,6 @@ class Meta extends \Illuminate\Database\Eloquent\Model {
 
 
     public function post() {
-        return $this->belongsTo('\WPEloquent\Model\Post');
+        return $this->belongsTo(\WPEloquent\Model\Post::class);
     }
 }

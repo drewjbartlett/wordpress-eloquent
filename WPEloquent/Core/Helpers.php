@@ -3,7 +3,7 @@
 
     class Helpers {
         // a copy of wp's is_serialized
-        public static function isSerialized( $data, $strict = true ) {
+        public static function isSerialized ($data, $strict = true) {
             // if it isn't a string, it isn't serialized.
             if ( ! is_string( $data ) ) {
                 return false;

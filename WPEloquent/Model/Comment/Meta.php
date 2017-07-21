@@ -10,6 +10,6 @@ class Meta extends \Illuminate\Database\Eloquent\Model {
 
 
     public function comment() {
-        return $this->belongsTo('\WPEloquent\Model\Comment');
+        return $this->belongsTo(\WPEloquent\Model\Comment::class);
     }
 }

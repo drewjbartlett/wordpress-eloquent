@@ -13,7 +13,7 @@ class Laravel {
      * @return [type]          [description]
      * @author drewjbartlett
      */
-    public static function connect($options = []) {
+    public static function connect ($options = []) {
 
         $defaults = [
             'global' => true,
@@ -64,11 +64,11 @@ class Laravel {
         return self::$_capsule;
     }
 
-    public static function getConnection() {
+    public static function getConnection () {
         return self::$_capsule->getConnection();
     }
 
-    public static function queryLog() {
+    public static function queryLog () {
         return self::getConnection()->getQueryLog();
     }
 }
