@@ -156,6 +156,9 @@ The models `Post`, `User`, `Comment`, `Term`, all implement the `HasMeta`. There
 
     $term = Term::find(123);
     $meta = $term->getMeta('some_term_meta');
+
+    // delete meta
+    $post = Post::find(123)->deleteMeta('some_term_meta');
 ```
 
 ### Options

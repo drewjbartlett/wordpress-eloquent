@@ -21,7 +21,7 @@ trait HasMeta {
         return $meta_value;
     }
 
-    public function setMeta ($key, $value){
+    public function setMeta ($key, $value) {
         $value = is_array($value) ? serialize($value) : $value;
         $meta  = $this->meta()->firstOrCreate(['meta_key' => $key]);
         $meta  = $this->meta()->where(['meta_key' => $key])->update(['meta_value' => $value]);
@@ -29,4 +29,12 @@ trait HasMeta {
         return $this;
     }
 
+    /**
+     * Deletes all meta for this object with given key
+     */
+    public function deleteMeta ($meta_key = false) {
+        if($meta_key) {
+            $this->meta()->where('meta_key', $meta_key)->delete();
+        }
+    }
 }
