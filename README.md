@@ -243,5 +243,3 @@ use \WPEloquent\Core\Laravel;
 print_r(Laravel::queryLog());
 
 ```
-
-** Disclaimer: This is the first version. There's a lot more that can be added to this but this works and is fully extendable. Expect updates in the near future!
