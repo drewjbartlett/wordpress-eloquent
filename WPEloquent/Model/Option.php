@@ -9,7 +9,7 @@ class Option extends \Illuminate\Database\Eloquent\Model {
     protected $primaryKey = 'option_id';
     public $timestamps    = false;
 
-    public static function getValue($key = '') {
+    public static function getValue ($key = '') {
         $value = '';
 
         if($key) {

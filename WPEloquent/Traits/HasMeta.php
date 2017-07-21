@@ -6,7 +6,7 @@ use WPEloquent\Core\Helpers;
 
 trait HasMeta {
 
-    public function getMeta($meta_key = false) {
+    public function getMeta ($meta_key = false) {
         $meta_value = '';
 
         if($meta_key) {
@@ -21,7 +21,7 @@ trait HasMeta {
         return $meta_value;
     }
 
-    public function setMeta($key, $value){
+    public function setMeta ($key, $value){
         $value = is_array($value) ? serialize($value) : $value;
         $meta  = $this->meta()->firstOrCreate(['meta_key' => $key]);
         $meta  = $this->meta()->where(['meta_key' => $key])->update(['meta_value' => $value]);
