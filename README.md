@@ -1,4 +1,4 @@
-# Wordpress Laravel Eloquent Models
+<h2>Wordpress Laravel Eloquent Models</h2>
 
 <p align="center">
 <img src="http://drewjbartlett.com/images/github/logo-laravel.svg">
