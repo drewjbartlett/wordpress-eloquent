@@ -23,7 +23,8 @@ class Laravel {
                     'user'     => '',
                     'password' => '',
                     'name'     => '',
-                    'host'     => ''
+                    'host'     => '',
+                    'port'     => '3306'
                 ],
 
                 'prefix' => 'wp_'
@@ -34,7 +35,7 @@ class Laravel {
             'log'    => true
         ];
 
-        $options = array_merge($defaults, $options);
+        $options = array_replace_recursive($defaults, $options);
 
         if(is_null(self::$_capsule)) {
 
@@ -46,6 +47,7 @@ class Laravel {
                 'database'  => $options['config']['database']['name'],
                 'username'  => $options['config']['database']['user'],
                 'password'  => $options['config']['database']['password'],
+                'port'      => $options['config']['database']['port'],
                 'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
                 'prefix'    => $options['config']['prefix']
