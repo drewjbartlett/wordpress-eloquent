@@ -37,6 +37,10 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
         return $this->terms()->where('taxonomy', 'category');
     }
 
+    public function attachments () {
+        return $this->hasMany(\WPEloquent\Model\Attachment::class, 'post_parent', 'ID')->where('post_type', 'attachment');
+    }
+
     public function tags () {
         return $this->terms()->where('taxonomy', 'post_tag');
     }
