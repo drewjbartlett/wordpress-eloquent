@@ -32,24 +32,27 @@ A library that converts converts wordpress tables into [Laravel Eloquent Models]
 require_once('vendor/autoload.php');
 
 \WPEloquent\Core\Laravel::connect([
+    'global' => true,
+
     'config' => [
 
         'database' => [
             'user'     => 'user',
             'password' => 'password',
             'name'     => 'database',
-            'host'     => '127.0.0.1'
+            'host'     => '127.0.0.1',
+            'port'     => '3306'
         ],
 
         // your wpdb prefix
         'prefix' => 'wp_',
-
-        // enable events
-        'events' => false,
-
-        // enable query log
-        'log'    => true
     ],
+
+    // enable events
+    'events' => false,
+
+    // enable query log
+    'log'    => true
 ]);
 
 ```
