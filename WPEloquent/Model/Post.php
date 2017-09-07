@@ -10,10 +10,19 @@ class Post extends  \Illuminate\Database\Eloquent\Model {
 
     protected $table      = 'posts';
     protected $primaryKey = 'ID';
+    protected $post_type = null;
     public $timestamps    = false;
 
     const CREATED_AT = 'post_date';
 	const UPDATED_AT = 'post_modified';
+	
+	public function newQuery() {
+		$query = parent::newQuery();
+		if($this->post_type) {
+			return $this->scopeType($query, $this->post_type);
+		}
+		return $query;
+	}
 
     public function author () {
         return $this->hasOne(\WPEloquent\Model\User::class, 'ID', 'post_author');
