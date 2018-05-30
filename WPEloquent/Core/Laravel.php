@@ -21,7 +21,7 @@ class Laravel
         if (is_null(self::$_capsule)) {
 
             self::$_capsule = new \Illuminate\Database\Capsule\Manager();
-            if (is_array($options['config']['database'])) {
+            if (array_key_exists('multiple_connections', $options) && $options['multiple_connections']) {
                 self::addMultipleConnections($options);
             } else {
                 self::addSingleConnection($options);
@@ -87,7 +87,7 @@ class Laravel
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => $options['config']['prefix'],
-        ], $name);
+        ]);
     }
 
     /**
