@@ -33,7 +33,7 @@ require_once('vendor/autoload.php');
 
 \WPEloquent\Core\Laravel::connect([
     'global' => true,
-
+    'multiple_connections' => false,
     'config' => [
 
         'database' => [
@@ -45,7 +45,8 @@ require_once('vendor/autoload.php');
         ],
 
         // your wpdb prefix
-        'prefix' => 'wp_',
+        'prefix' => 'wp_', 
+        
     ],
 
     // enable events
@@ -55,6 +56,34 @@ require_once('vendor/autoload.php');
     'log'    => true
 ]);
 
+```
+
+If you would like to create multiple database connections set the multiple_connections value to true, and replace the config element as follows: 
+```php
+'config' => [
+
+    'database' => [
+        'default' => [  
+            'user'     => 'user',
+            'password' => 'password',
+            'name'     => 'database',
+            'host'     => '127.0.0.1',
+            'port'     => '3306',
+            'prefix' => 'wp_',
+        ],
+        // Define your extra connections here
+        
+        //    'extra_connection' => [  
+        //    'user'     => 'user2',
+        //    'password' => 'password2',
+        //    'name'     => 'database2',
+        //    'host'     => '127.0.0.2',
+        //    'port'     => '3306',
+        //    'prefix' => 'wp_',
+        //],
+    ]   
+    
+], 
 ```
 
 If you wanted to enable this on your entire WP install you could create a file with the above code to drop in the `mu-plugins` folder.
